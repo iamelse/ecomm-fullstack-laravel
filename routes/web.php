@@ -13,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
 
 Auth::routes();
