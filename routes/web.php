@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/details/{id}', [DetailController::class, 'index']);
 
 Auth::routes();
