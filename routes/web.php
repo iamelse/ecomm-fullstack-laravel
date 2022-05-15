@@ -32,6 +32,7 @@ Route::get('/dashboard/products/create', [DashboardProductController::class, 'cr
 Route::get('/dashboard/products/details/{id}', [DashboardProductController::class, 'details']);
 
 Route::get('/dashboard/transactions', [DashboardTransactionsController::class, 'index']);
+Route::get('/dashboard/transactions/{id}', [DashboardTransactionsController::class, 'details']);
 
 /** Testing View */
 Route::get('/register/success', [TestViewController::class, 'register_success']);
