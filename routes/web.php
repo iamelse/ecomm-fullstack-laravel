@@ -26,6 +26,7 @@ Route::get('/cart', [CartController::class, 'index']);
 Route::get('/success', [CartController::class, 'success']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/dashboard/products', [DashboardProductController::class, 'index']);
+Route::get('/dashboard/products/create', [DashboardProductController::class, 'create']);
 Route::get('/dashboard/products/details/{id}', [DashboardProductController::class, 'details']);
 
 /** Testing View */
