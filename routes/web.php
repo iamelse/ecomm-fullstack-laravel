@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
+use App\Http\Controllers\DashboardSettingController;
 use App\Http\Controllers\DashboardTransactionsController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
@@ -33,6 +34,9 @@ Route::get('/dashboard/products/details/{id}', [DashboardProductController::clas
 
 Route::get('/dashboard/transactions', [DashboardTransactionsController::class, 'index']);
 Route::get('/dashboard/transactions/{id}', [DashboardTransactionsController::class, 'details']);
+
+Route::get('/dashboard/settings', [DashboardSettingController::class, 'store']);
+Route::get('/dashboard/account', [DashboardSettingController::class, 'account']);
 
 /** Testing View */
 Route::get('/register/success', [TestViewController::class, 'register_success']);
