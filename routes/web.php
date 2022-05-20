@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -37,6 +38,10 @@ Route::get('/dashboard/transactions/{id}', [DashboardTransactionsController::cla
 
 Route::get('/dashboard/settings', [DashboardSettingController::class, 'store']);
 Route::get('/dashboard/account', [DashboardSettingController::class, 'account']);
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index']);
+});
 
 /** Testing View */
 Route::get('/register/success', [TestViewController::class, 'register_success']);
