@@ -34,8 +34,8 @@
                       class="list-group-item list-group-item-action"
                     >Products</a>
                     <a
-                      href="/dashboard-transactions.html"
-                      class="list-group-item list-group-item-action"
+                      href="/admin/category"
+                      class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}"
                     >Categories</a>
                     <a
                       href="/dashboard-settings.html"
