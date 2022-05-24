@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/category/store', [AdminCategoryController::class, 'store']);
     Route::get('/category/edit/{id}', [AdminCategoryController::class, 'edit']);
     Route::put('/category/update/{id}', [AdminCategoryController::class, 'update']);
+    Route::delete('/category/destroy/{id}', [AdminCategoryController::class, 'destroy']);
 });
 
 /** Testing View */
