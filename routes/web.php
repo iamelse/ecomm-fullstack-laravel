@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
@@ -42,7 +41,9 @@ Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index']);
-    Route::resource('category', AdminCategoryController::class);
+    Route::get('/category', [AdminCategoryController::class, 'index']);
+    Route::get('/category/create', [AdminCategoryController::class, 'create']);
+    Route::post('/category/store', [AdminCategoryController::class, 'store']);
 });
 
 /** Testing View */
