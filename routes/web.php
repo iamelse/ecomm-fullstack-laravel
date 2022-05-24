@@ -44,6 +44,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/category', [AdminCategoryController::class, 'index']);
     Route::get('/category/create', [AdminCategoryController::class, 'create']);
     Route::post('/category/store', [AdminCategoryController::class, 'store']);
+    Route::get('/category/edit/{id}', [AdminCategoryController::class, 'edit']);
+    Route::put('/category/update/{id}', [AdminCategoryController::class, 'update']);
 });
 
 /** Testing View */

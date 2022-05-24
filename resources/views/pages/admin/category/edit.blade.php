@@ -14,7 +14,7 @@
     <div class="dashboard-heading">
         <h2 class="dashboard-title">Category</h2>
         <p class="dashboard-subtitle">
-            Create New Category
+            Edit Category
         </p>
     </div>
     <div class="dashboard-content">
@@ -29,7 +29,8 @@
                   </ul>
               </div>
           @endif
-          <form action="/admin/category/store" method="post" enctype="multipart/form-data">
+          <form action="/admin/category/update/{{ $item->id }}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="card">
               <div class="card-body">
@@ -37,13 +38,13 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Nama Kategori</label>
-                      <input type="text" class="form-control" name="name" required />
+                      <input type="text" class="form-control" name="name" value="{{ $item->name }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Foto</label>
-                      <input type="file" class="form-control" name="photo" placeholder="Photo" required />
+                      <input type="file" class="form-control" name="photo" placeholder="Photo"/>
                     </div>
                   </div>
                 </div>
