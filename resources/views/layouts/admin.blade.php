@@ -42,8 +42,8 @@
                       class="list-group-item list-group-item-action"
                     >Transactions</a>
                     <a
-                      href="/dashboard-account.html"
-                      class="list-group-item list-group-item-action"
+                      href="/admin/user"
+                      class="list-group-item list-group-item-action {{ (request()->is('admin/user*')) ? 'active' : '' }}"
                     >Users</a>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
@@ -41,12 +42,17 @@ Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index']);
+    /** Category */
     Route::get('/category', [AdminCategoryController::class, 'index']);
     Route::get('/category/create', [AdminCategoryController::class, 'create']);
     Route::post('/category/store', [AdminCategoryController::class, 'store']);
     Route::get('/category/edit/{id}', [AdminCategoryController::class, 'edit']);
     Route::put('/category/update/{id}', [AdminCategoryController::class, 'update']);
     Route::delete('/category/destroy/{id}', [AdminCategoryController::class, 'destroy']);
+    /** User */
+    Route::get('/user', [AdminUserController::class, 'index']);
+    Route::get('/user/create', [AdminUserController::class, 'create']);
+    Route::post('/user/store', [AdminUserController::class, 'store']);
 });
 
 /** Testing View */
