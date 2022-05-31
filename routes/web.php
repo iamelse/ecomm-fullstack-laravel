@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
@@ -56,6 +57,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/user/edit/{id}', [AdminUserController::class, 'edit']);
     Route::put('/user/update/{id}', [AdminUserController::class, 'update']);
     Route::delete('/user/destroy/{id}', [AdminUserController::class, 'destroy']);
+    /** Product */
+    Route::get('/product', [AdminProductController::class, 'index']);
 });
 
 /** Testing View */
