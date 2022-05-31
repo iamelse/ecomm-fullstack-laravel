@@ -12,9 +12,9 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Category</h2>
+        <h2 class="dashboard-title">User</h2>
         <p class="dashboard-subtitle">
-            Edit Category
+            Edit User
         </p>
     </div>
     <div class="dashboard-content">
@@ -29,7 +29,7 @@
                   </ul>
               </div>
           @endif
-          <form action="/admin/category/update/{{ $item->id }}" method="post" enctype="multipart/form-data">
+          <form action="/admin/user/update/{{ $item->id }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="card">
@@ -37,14 +37,34 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Nama Kategori</label>
+                      <label>Nama User</label>
                       <input type="text" class="form-control" name="name" value="{{ $item->name }}" required />
                     </div>
                   </div>
+
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Foto</label>
-                      <input type="file" class="form-control" name="photo" placeholder="Photo"/>
+                      <label>Email User</label>
+                      <input type="text" class="form-control" name="email" value="{{ $item->email }}" required />
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Password User</label>
+                      <input type="password" class="form-control" name="password"/>
+                      <small>*Biarkan kosong bila tidak ingin mengganti password</small>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Roles</label>
+                      <select name="roles" required class="form-control">
+                          <option value="{{ $item->roles }}" selected>Tidak Diganti</option>
+                          <option value="ADMIN">Admin</option>
+                          <option value="USER">User</option>
+                        </select>
                     </div>
                   </div>
                 </div>

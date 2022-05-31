@@ -53,6 +53,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/user', [AdminUserController::class, 'index']);
     Route::get('/user/create', [AdminUserController::class, 'create']);
     Route::post('/user/store', [AdminUserController::class, 'store']);
+    Route::get('/user/edit/{id}', [AdminUserController::class, 'edit']);
+    Route::put('/user/update/{id}', [AdminUserController::class, 'update']);
 });
 
 /** Testing View */

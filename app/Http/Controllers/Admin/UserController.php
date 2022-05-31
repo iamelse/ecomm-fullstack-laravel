@@ -74,10 +74,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(UserRequest $category)
+    public function show(UserRequest $user)
     {
         //
     }
@@ -85,14 +85,14 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $item = User::findOrFail($id);
 
-        return view('pages.admin.category.edit', [
+        return view('pages.admin.user.edit', [
             'item'  => $item
         ]);
     }
@@ -101,21 +101,24 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $category
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(UserRequest $request, $id)
     {
         $data = $request->all();
 
-        $data['slug'] = Str::slug($request->name);
-        $data['photo'] = $request->file('photo')->store('assets/category', 'public');
-
         $item = User::findOrFail($id);
+
+        if($request->password) {
+            $data['password'] =  bcrypt($request->password);
+        } else {
+            unset($data['password']);
+        }
 
         $item->update($data);
 
-        return redirect('/admin/category');
+        return redirect('/admin/user');
 
     }
 
