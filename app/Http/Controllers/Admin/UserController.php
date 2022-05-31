@@ -133,6 +133,6 @@ class UserController extends Controller
         $item = User::findOrFail($id);
         $item->delete();
 
-        return redirect('/admin/category');
+        return redirect('/admin/user');
     }
 }
