@@ -28,7 +28,7 @@ class ProductController extends Controller
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle mr-1 mb-1" type="button" data-toggle="dropdown">Aksi</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/admin/user/edit/' . $item->id . '">
+                                <a class="dropdown-item" href="/admin/product/edit/' . $item->id . '">
                                     Sunting 
                                 </a>
                                 <form action="/admin/user/destroy/' . $item->id . '" method="POST">
@@ -99,9 +99,13 @@ class ProductController extends Controller
     public function edit($id)
     {
         $item = Product::findOrFail($id);
+        $users = User::all();
+        $categories = Category::all();
 
-        return view('pages.admin.user.edit', [
-            'item'  => $item
+        return view('pages.admin.product.edit', [
+            'item'  => $item,
+            'users' => $users,
+            'categories' => $categories
         ]);
     }
 
@@ -118,15 +122,11 @@ class ProductController extends Controller
 
         $item = Product::findOrFail($id);
 
-        if($request->password) {
-            $data['password'] =  bcrypt($request->password);
-        } else {
-            unset($data['password']);
-        }
+        $data['slug']  = Str::slug($request->name);
 
         $item->update($data);
 
-        return redirect('/admin/user');
+        return redirect('/admin/product');
 
     }
 
