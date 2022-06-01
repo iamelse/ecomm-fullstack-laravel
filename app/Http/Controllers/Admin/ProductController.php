@@ -31,7 +31,7 @@ class ProductController extends Controller
                                 <a class="dropdown-item" href="/admin/product/edit/' . $item->id . '">
                                     Sunting 
                                 </a>
-                                <form action="/admin/user/destroy/' . $item->id . '" method="POST">
+                                <form action="/admin/product/destroy/' . $item->id . '" method="POST">
                                     ' . method_field('delete') . csrf_field() . '
                                     <button type="submit" class="dropdown-item text-danger">
                                         Hapus
@@ -141,6 +141,6 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $item->delete();
 
-        return redirect('/admin/user');
+        return redirect('/admin/product');
     }
 }
