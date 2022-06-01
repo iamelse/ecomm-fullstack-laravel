@@ -18,7 +18,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="/admin/user/create" class="btn btn-primary mb-3">Tambah Product Baru</a>
+                                <a href="/admin/product/create" class="btn btn-primary mb-3">Tambah Product Baru</a>
                                 <div class="table-responsive">
                                     <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                         <thead>

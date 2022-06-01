@@ -59,6 +59,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('/user/destroy/{id}', [AdminUserController::class, 'destroy']);
     /** Product */
     Route::get('/product', [AdminProductController::class, 'index']);
+    Route::get('/product/create', [AdminProductController::class, 'create']);
+    Route::post('/product/store', [AdminProductController::class, 'store']);
 });
 
 /** Testing View */
