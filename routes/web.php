@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\ProductGalleryController as AdminProductGalleryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
@@ -64,6 +65,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/product/edit/{id}', [AdminProductController::class, 'edit']);
     Route::put('/product/update/{id}', [AdminProductController::class, 'update']);
     Route::delete('/product/destroy/{id}', [AdminProductController::class, 'destroy']);
+    /** Product Gallery */
+    Route::get('/product-gallery', [AdminProductGalleryController::class, 'index']);
+    Route::get('/product-gallery/create', [AdminProductGalleryController::class, 'create']);
+    Route::post('/product-gallery/store', [AdminProductGalleryController::class, 'store']);
+    Route::delete('/product-gallery/destroy/{id}', [AdminProductGalleryController::class, 'destroy']);
 });
 
 /** Testing View */

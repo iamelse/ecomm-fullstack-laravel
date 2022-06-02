@@ -31,8 +31,12 @@
                       >Dashboard</a>
                     <a
                       href="/admin/product"
-                      class="list-group-item list-group-item-action {{ (request()->is('admin/product*')) ? 'active' : '' }}"
+                      class="list-group-item list-group-item-action {{ (request()->is('admin/product')) ? 'active' : '' }}"
                     >Products</a>
+                    <a
+                      href="/admin/product-gallery"
+                      class="list-group-item list-group-item-action {{ (request()->is('admin/product-gallery*')) ? 'active' : '' }}"
+                    >Galleries</a>
                     <a
                       href="/admin/category"
                       class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}"
