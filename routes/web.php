@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductGalleryController as AdminProductGalleryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{id}', [CategoryController::class, 'detail']);
+Route::get('/categories/{slug}', [CategoryController::class, 'detail']);
 Route::get('/details/{id}', [DetailController::class, 'index']);
 Route::get('/cart', [CartController::class, 'index']);
 Route::get('/success', [CartController::class, 'success']);
