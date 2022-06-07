@@ -32,6 +32,7 @@ Route::get('/categories/{id}', [CategoryController::class, 'detail']);
 Route::get('product/details/{id}', [DetailController::class, 'index']);
 Route::post('product/details/add/{id}', [DetailController::class, 'add']);
 Route::get('/cart', [CartController::class, 'index']);
+Route::delete('/cart/delete/{id}', [CartController::class, 'delete']);
 Route::get('/success', [CartController::class, 'success']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
