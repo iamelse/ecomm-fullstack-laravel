@@ -92,7 +92,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link d-inline-block">
+                    <a href="/cart" class="nav-link d-inline-block">
                         Cart
                     </a>
                 </li>

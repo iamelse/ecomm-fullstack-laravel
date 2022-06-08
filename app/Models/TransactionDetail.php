@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class TransactionDetail extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'users_id', 
-        'inscurance_price',
-        'shipping_price',
-        'total_price',
-        'transaction_status',
-        'code'
+        'transactions_id', 'products_id', 'price', 'shipping_status', 'resi' ,'code'
     ];
 
     protected $hidden = [

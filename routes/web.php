@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductGalleryController as AdminProductGalleryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
@@ -27,26 +28,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [HomeController::class, 'index']);
+
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{id}', [CategoryController::class, 'detail']);
+
 Route::get('product/details/{id}', [DetailController::class, 'index']);
 Route::post('product/details/add/{id}', [DetailController::class, 'add']);
-Route::get('/cart', [CartController::class, 'index']);
-Route::delete('/cart/delete/{id}', [CartController::class, 'delete']);
+
+Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 Route::get('/success', [CartController::class, 'success']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/dashboard/products', [DashboardProductController::class, 'index']);
-Route::get('/dashboard/products/create', [DashboardProductController::class, 'create']);
-Route::get('/dashboard/products/details/{id}', [DashboardProductController::class, 'details']);
 
-Route::get('/dashboard/transactions', [DashboardTransactionsController::class, 'index']);
-Route::get('/dashboard/transactions/{id}', [DashboardTransactionsController::class, 'details']);
 
-Route::get('/dashboard/settings', [DashboardSettingController::class, 'store']);
-Route::get('/dashboard/account', [DashboardSettingController::class, 'account']);
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::delete('/cart/delete/{id}', [CartController::class, 'delete']);
 
-Route::prefix('admin')->group(function () {
+    Route::post('/checkout', [CheckoutController::class, 'process']);
+
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard/products', [DashboardProductController::class, 'index']);
+    Route::get('/dashboard/products/create', [DashboardProductController::class, 'create']);
+    Route::get('/dashboard/products/details/{id}', [DashboardProductController::class, 'details']);
+    
+    Route::get('/dashboard/transactions', [DashboardTransactionsController::class, 'index']);
+    Route::get('/dashboard/transactions/{id}', [DashboardTransactionsController::class, 'details']);
+    
+    Route::get('/dashboard/settings', [DashboardSettingController::class, 'store']);
+    Route::get('/dashboard/account', [DashboardSettingController::class, 'account']);    
+    
+});
+
+
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index']);
     /** Category */
     Route::get('/category', [AdminCategoryController::class, 'index']);
