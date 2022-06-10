@@ -49,7 +49,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/products', [DashboardProductController::class, 'index']);
     Route::get('/dashboard/products/create', [DashboardProductController::class, 'create']);
+    Route::post('/dashboard/products/store', [DashboardProductController::class, 'store']);
     Route::get('/dashboard/products/details/{id}', [DashboardProductController::class, 'details']);
+    Route::put('/dashboard/products/update/{id}', [DashboardProductController::class, 'update']);
+
+    Route::post('/dashboard/products/gallery/upload', [DashboardProductController::class, 'uploadGallery']);
+    Route::get('/dashboard/products/gallery/delete/{id}', [DashboardProductController::class, 'deleteGallery']);
     
     Route::get('/dashboard/transactions', [DashboardTransactionsController::class, 'index']);
     Route::get('/dashboard/transactions/{id}', [DashboardTransactionsController::class, 'details']);
